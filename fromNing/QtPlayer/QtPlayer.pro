@@ -17,15 +17,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    vlcwidget.cpp
 
 HEADERS += \
-    mainwindow.h
+    vlcwidget.h
 
 FORMS += \
-    mainwindow.ui
+    vlcwidget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+INCLUDEPATH += ./vlc-3.0.8-win32/sdk/include
+LIBS += $$PWD/vlc-3.0.8-win32/sdk/lib/libvlc.lib
+LIBS += $$PWD/vlc-3.0.8-win32/sdk/lib/libvlccore.lib
