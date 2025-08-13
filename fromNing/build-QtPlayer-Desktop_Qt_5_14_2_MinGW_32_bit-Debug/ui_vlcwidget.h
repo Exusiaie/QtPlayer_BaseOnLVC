@@ -26,16 +26,18 @@ class Ui_VLCWidget
 public:
     QHBoxLayout *horizontalLayout_3;
     QVBoxLayout *verticalLayout;
-    QWidget *widgetVideo;
+    QWidget *videoWidget;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
-    QSlider *horizontalSlider;
+    QSlider *playSlider;
     QHBoxLayout *horizontalLayout_2;
     QSpacerItem *horizontalSpacer;
     QPushButton *btnOpen;
     QPushButton *btnPlayer;
     QPushButton *btnPause;
     QPushButton *btnStop;
+    QPushButton *btnFullScreen;
+    QSlider *volumeSlider;
     QSpacerItem *horizontalSpacer_2;
 
     void setupUi(QWidget *VLCWidget)
@@ -47,10 +49,10 @@ public:
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        widgetVideo = new QWidget(VLCWidget);
-        widgetVideo->setObjectName(QString::fromUtf8("widgetVideo"));
+        videoWidget = new QWidget(VLCWidget);
+        videoWidget->setObjectName(QString::fromUtf8("videoWidget"));
 
-        verticalLayout->addWidget(widgetVideo);
+        verticalLayout->addWidget(videoWidget);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
@@ -59,11 +61,11 @@ public:
 
         horizontalLayout->addWidget(label);
 
-        horizontalSlider = new QSlider(VLCWidget);
-        horizontalSlider->setObjectName(QString::fromUtf8("horizontalSlider"));
-        horizontalSlider->setOrientation(Qt::Horizontal);
+        playSlider = new QSlider(VLCWidget);
+        playSlider->setObjectName(QString::fromUtf8("playSlider"));
+        playSlider->setOrientation(Qt::Horizontal);
 
-        horizontalLayout->addWidget(horizontalSlider);
+        horizontalLayout->addWidget(playSlider);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -94,6 +96,17 @@ public:
 
         horizontalLayout_2->addWidget(btnStop);
 
+        btnFullScreen = new QPushButton(VLCWidget);
+        btnFullScreen->setObjectName(QString::fromUtf8("btnFullScreen"));
+
+        horizontalLayout_2->addWidget(btnFullScreen);
+
+        volumeSlider = new QSlider(VLCWidget);
+        volumeSlider->setObjectName(QString::fromUtf8("volumeSlider"));
+        volumeSlider->setOrientation(Qt::Horizontal);
+
+        horizontalLayout_2->addWidget(volumeSlider);
+
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_2->addItem(horizontalSpacer_2);
@@ -118,6 +131,7 @@ public:
         btnPlayer->setText(QCoreApplication::translate("VLCWidget", "\346\222\255\346\224\276", nullptr));
         btnPause->setText(QCoreApplication::translate("VLCWidget", "\346\232\202\345\201\234", nullptr));
         btnStop->setText(QCoreApplication::translate("VLCWidget", "\345\201\234\346\255\242", nullptr));
+        btnFullScreen->setText(QCoreApplication::translate("VLCWidget", "\345\205\250\345\261\217", nullptr));
     } // retranslateUi
 
 };

@@ -1,5 +1,4 @@
 #include "vlcwidget.h"
-
 #include <QApplication>
 
 int main(int argc, char *argv[])

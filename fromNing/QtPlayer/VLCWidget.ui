@@ -17,7 +17,7 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QWidget" name="widgetVideo" native="true"/>
+      <widget class="QWidget" name="videoWidget" native="true"/>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
@@ -29,7 +29,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QSlider" name="horizontalSlider">
+        <widget class="QSlider" name="playSlider">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -77,6 +77,20 @@
         <widget class="QPushButton" name="btnStop">
          <property name="text">
           <string>停止</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnFullScreen">
+         <property name="text">
+          <string>全屏</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSlider" name="volumeSlider">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
          </property>
         </widget>
        </item>
