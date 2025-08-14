@@ -17,7 +17,7 @@ public:
     void setTotalTime(const qint64& totalMs);
 private slots:
 signals:
-    void sig_play();
+    void sig_play();    // play信号
     void sig_stop();
     void sig_fullScreen();
 private:

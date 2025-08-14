@@ -7,9 +7,9 @@ CVolumeButton::CVolumeButton(QWidget *parent)
     , _pvolumeSliderDlg(nullptr)
 {
     this->setFixedSize(32,32);
-    setStyleSheet("QPushButton{backgroundimage:url(:/resources/audio_open.svg);border:none;}"
-                  "QPushButton:hover{backgroundimage:url(:/resources/audio_open_hover.svg);border:none;}"
-                  "QPushButton:pressed{backgroundimage:url(:/resources/audio_open.svg);border:none;}");
+    setStyleSheet("QPushButton{background-image:url(:/Resource/playctrlBar/audio_open.svg);border:none;}"
+                  "QPushButton:hover{background-image:url(:/Resource/playctrlBar/audio_open_hover.svg);border:none;}"
+                  "QPushButton:pressed{background-image:url(:/Resource/playctrlBar/audio_open.svg);border:none;}");
 }
 CVolumeButton::~CVolumeButton()
 {}

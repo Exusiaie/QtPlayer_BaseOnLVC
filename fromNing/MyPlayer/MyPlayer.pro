@@ -20,20 +20,26 @@ SOURCES += \
     CBottomCtrlBar.cpp \
     CFramelessWidget.cpp \
     CMainWindow.cpp \
+    CMenuWidget.cpp \
     CPlayButtonGroupWidget.cpp \
     CTitleBar.cpp \
     CVolumeButton.cpp \
     CVolumeSliderDialog.cpp \
+    TestVLCKits.cpp \
+    VLCKits.cpp \
     main.cpp
 
 HEADERS += \
     CBottomCtrlBar.h \
     CFramelessWidget.h \
     CMainWindow.h \
+    CMenuWidget.h \
     CPlayButtonGroupWidget.h \
     CTitleBar.h \
     CVolumeButton.h \
-    CVolumeSliderDialog.h
+    CVolumeSliderDialog.h \
+    TestVLCKits.h \
+    VLCKits.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -45,3 +51,7 @@ RESOURCES += \
     Resource.qrc \
     Resource.qrc \
     Resource.qrc
+
+INCLUDEPATH += ./vlc-3.0.8-win32/sdk/include
+LIBS += $$PWD/vlc-3.0.8-win32/sdk/lib/libvlc.lib
+LIBS += $$PWD/vlc-3.0.8-win32/sdk/lib/libvlccore.lib

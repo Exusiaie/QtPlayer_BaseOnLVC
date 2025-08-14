@@ -23,21 +23,21 @@ CBottomCtrlBar::CBottomCtrlBar(QWidget* p)
     m_pToolBoxButton = new QPushButton(this);
     m_pToolBoxButton->setText("");
     m_pToolBoxButton->setFixedSize(32, 32);
-    m_pToolBoxButton->setStyleSheet("QPushButton{backgroundimage:url(:/playCtrlBar/resources/playctrlBar/toolbox.svg);border:none;}"
-                                    "QPushButton:hover{background-image:url(:/playCtrlBar/resources/playctrlBar/toolbox_hover.svg);border:none;}"
-                                    "QPushButton:pressed{background-image:url(:/playCtrlBar/resources/playctrlBar/toolbox.svg);border:none;}");
+    m_pToolBoxButton->setStyleSheet("QPushButton{background-image:url(:/Resource/playctrlBar/toolbox.svg);border:none;}"
+                                    "QPushButton:hover{background-image:url(:/Resource/playctrlBar/toolbox_hover.svg);border:none;}"
+                                    "QPushButton:pressed{background-image:url(:/Resource/playctrlBar/toolbox.svg);border:none;}");
     m_pEffectButton = new QPushButton(this);
     m_pEffectButton->setText("");
     m_pEffectButton->setFixedSize(32, 32);
-    m_pEffectButton->setStyleSheet("QPushButton{backgroundimage:url(:/playCtrlBar/resources/playctrlBar/effect.svg);border:none;}"
-                                   "QPushButton:hover{backgroundimage:url(:/playCtrlBar/resources/playctrlBar/effect_hover.svg);border:none;}"
-                                   "QPushButton:pressed{backgroundimage:url(:/playCtrlBar/resources/playctrlBar/effect.svg);border:none;}");
+    m_pEffectButton->setStyleSheet("QPushButton{background-image:url(:/Resource/playctrlBar/effect.svg);border:none;}"
+                                   "QPushButton:hover{background-image:url(:/Resource/playctrlBar/effect_hover.svg);border:none;}"
+                                   "QPushButton:pressed{background-image:url(:/Resource/playctrlBar/effect.svg);border:none;}");
     m_pFullscreenButton = new QPushButton(this);
     m_pFullscreenButton->setText("");
     m_pFullscreenButton->setFixedSize(32, 32);
-    m_pFullscreenButton->setStyleSheet("QPushButton{backgroundimage:url(:/playCtrlBar/resources/playctrlBar/fullscreen.svg);border:none;}"
-                                       "QPushButton:hover{backgroundimage:url(:/playCtrlBar/resources/playctrlBar/fullscreen_hover.svg);border:none;}"
-                                       "QPushButton:pressed{backgroundimage:url(:/playCtrlBar/resources/playctrlBar/fullscreen.svg);border:none;}");
+    m_pFullscreenButton->setStyleSheet("QPushButton{background-image:url(:/Resource/playctrlBar/fullscreen.svg);border:none;}"
+                                       "QPushButton:hover{background-image:url(:/Resource/playctrlBar/fullscreen_hover.svg);border:none;}"
+                                       "QPushButton:pressed{background-image:url(:/Resource/playctrlBar/fullscreen.svg);border:none;}");
     QHBoxLayout* pHLay = new QHBoxLayout(this);
     pHLay->addSpacing(3);
     pHLay->addWidget(m_pCurPlayTimeLabel);
@@ -52,7 +52,7 @@ CBottomCtrlBar::CBottomCtrlBar(QWidget* p)
     pHLay->addSpacing(18);
     pHLay->addWidget(m_pFullscreenButton);
     showTimeLabel(false);
-    connect(m_pPlayButtonGroupWidget, &CPlayButtonGroupWidget::sig_play,
+    connect(m_pPlayButtonGroupWidget, &CPlayButtonGroupWidget::sig_play, // 将上面一层类发出的信号再进行转发
             this, &CBottomCtrlBar::sig_play);
     connect(m_pPlayButtonGroupWidget, &CPlayButtonGroupWidget::sig_stop,
             this, &CBottomCtrlBar::sig_stop);

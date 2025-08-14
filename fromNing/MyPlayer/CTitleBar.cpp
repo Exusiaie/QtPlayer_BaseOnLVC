@@ -31,9 +31,9 @@ void CTitleBar::initUI()
     this->setStyleSheet("background-color:rgb(54,54,54)");
 
     _plogoLabel = new QLabel(this);
-    _plogoLabel->setFixedSize(32,32);
+    _plogoLabel->setFixedSize(24,24);
     _plogoLabel->setStyleSheet(
-            "border-image:url(:/Resource/titlebar/title_icon.png);border:none");
+            "border-image:url(:/Resource/accessible-icon.png);border:none");
 
     _ptitleTextLabel = new QLabel(this);
     _ptitleTextLabel->setText("我是标题");
@@ -46,34 +46,34 @@ void CTitleBar::initUI()
     _psetButton = new QPushButton(this);
     _psetButton->setFixedSize(32, 32);
     _psetButton->setStyleSheet(
-            "QPushButton{border-image:url(:/Resource/titlebar/set.svg);border:none}"
+            "QPushButton{background-image:url(:/Resource/titleBar/set.svg);border:none}"
             "QPushButton:hover{"
                     "background-color:rgb(199, 99, 99);"
-                    "border-image:url(:/Resource/titlebar/set_hover.svg);border:none;}");
+                    "background-image:url(:/Resource/titleBar/set_hover.svg);border:none;}");
 
     _pminButton = new QPushButton(this);
     _pminButton->setFixedSize(32, 32);
     _pminButton->setStyleSheet(
-            "QPushButton{border-image:url(:/Resource/titlebar/min.svg);border:none}"
+            "QPushButton{background-image:url(:/Resource/titleBar/min.svg);border:none}"
             "QPushButton:hover{"
                     "background-color:rgb(99, 99, 99);"
-                    "border-image:url(:/Resource/titlebar/min_hover.svg);border:none;}");
+                    "background-image:url(:/Resource/titleBar/min_hover.svg);border:none;}");
 
     _pmaxButton = new QPushButton(this);
     _pmaxButton->setFixedSize(32, 32);
     _pmaxButton->setStyleSheet(
-            "QPushButton{border-image:url(:/Resource/titlebar/max.svg);border:none}"
+            "QPushButton{background-image:url(:/Resource/titleBar/max.svg);border:none}"
             "QPushButton:hover{"
                     "background-color:rgb(99, 99, 99);"
-                    "border-image:url(:/Resource/titlebar/max_hover.svg);border:none;}");
+                    "background-image:url(:/Resource/titleBar/max_hover.svg);border:none;}");
 
     _pcloseButton = new QPushButton(this);
     _pcloseButton->setFixedSize(32, 32);
     _pcloseButton->setStyleSheet(
-            "QPushButton{border-image:url(:/Resource/titlebar/close.svg);border:none}"
+            "QPushButton{background-image:url(:/Resource/titleBar/close.svg);border:none}"
             "QPushButton:hover{"
                     "background-color:rgb(99, 99, 99);"
-                    "border-image:url(:/Resource/titlebar/close_hover.svg);border:none;}");
+                    "background-image:url(:/Resource/titleBar/close_hover.svg);border:none;}");
 
     QHBoxLayout * phLayout = new QHBoxLayout(this);
     phLayout->addWidget(_plogoLabel);
@@ -113,17 +113,17 @@ void CTitleBar::onClickedSlot()
         if(pwindow->isMaximized()) {
             pwindow->showNormal();
             _pmaxButton->setStyleSheet(
-                    "QPushButton{border-image:url(:/Resource/titlebar/normal.svg);border:none}"
+                    "QPushButton{background-image:url(:/Resource/titleBar/normal.svg);border:none}"
                     "QPushButton:hover{"
                             "background-color:rgb(99, 99, 99);"
-                            "border-image:url(:/Resource/titlebar/normal_hover.svg);border:none;}");
+                            "background-image:url(:/Resource/titleBar/normal_hover.svg);border:none;}");
         } else  {
             pwindow->showMaximized();
             _pmaxButton->setStyleSheet(
-                    "QPushButton{border-image:url(:/Resource/titlebar/max.svg);border:none}"
+                    "QPushButton{background-image:url(:/Resource/titleBar/max.svg);border:none}"
                     "QPushButton:hover{"
                             "background-color:rgb(99, 99, 99);"
-                            "border-image:url(:/Resource/titlebar/max_hover.svg);border:none;}");
+                            "background-image:url(:/Resource/titleBar/max_hover.svg);border:none;}");
         }
     } else if(pbtn == _pcloseButton) {
         emit sigClose();//发射信号，通知父窗口关闭

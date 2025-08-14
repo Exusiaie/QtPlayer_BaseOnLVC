@@ -22,7 +22,6 @@ SOURCES += \
 
 HEADERS += \
     VLCKits.h \
-    qss.h \
     vlcwidget.h
 
 FORMS += \
