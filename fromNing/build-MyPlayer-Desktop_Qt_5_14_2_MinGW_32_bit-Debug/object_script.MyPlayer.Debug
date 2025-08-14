@@ -1,0 +1,16 @@
+debug/CBottomCtrlBar.o
+debug/CFramelessWidget.o
+debug/CMainWindow.o
+debug/CPlayButtonGroupWidget.o
+debug/CTitleBar.o
+debug/CVolumeButton.o
+debug/CVolumeSliderDialog.o
+debug/main.o
+debug/qrc_Resource.o
+debug/moc_CBottomCtrlBar.o
+debug/moc_CFramelessWidget.o
+debug/moc_CMainWindow.o
+debug/moc_CPlayButtonGroupWidget.o
+debug/moc_CTitleBar.o
+debug/moc_CVolumeButton.o
+debug/moc_CVolumeSliderDialog.o

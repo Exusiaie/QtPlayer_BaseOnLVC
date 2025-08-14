@@ -1,0 +1,16 @@
+release/CBottomCtrlBar.o
+release/CFramelessWidget.o
+release/CMainWindow.o
+release/CPlayButtonGroupWidget.o
+release/CTitleBar.o
+release/CVolumeButton.o
+release/CVolumeSliderDialog.o
+release/main.o
+release/qrc_Resource.o
+release/moc_CBottomCtrlBar.o
+release/moc_CFramelessWidget.o
+release/moc_CMainWindow.o
+release/moc_CPlayButtonGroupWidget.o
+release/moc_CTitleBar.o
+release/moc_CVolumeButton.o
+release/moc_CVolumeSliderDialog.o
