@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/titlebar/close.svg</file>
+        <file>resources/titlebar/max.svg</file>
+        <file>resources/titlebar/min.svg</file>
+        <file>resources/titlebar/normal.svg</file>
+        <file>resources/titlebar/set.svg</file>
+        <file>resources/titlebar/title_icon.png</file>
+        <file>resources/exit.png</file>
+        <file>resources/file.png</file>
+        <file>resources/play.png</file>
+        <file>resources/set.png</file>
+        <file>resources/tools.png</file>
+        <file>resources/down_arrow.svg</file>
+        <file>resources/up_arrow.svg</file>
+        <file>resources/titlebar/menu.svg</file>
+        <file>resources/titlebar/min_bak.svg</file>
+        <file>resources/audio_mute.svg</file>
+        <file>resources/audio_open.svg</file>
+    </qresource>
+</RCC>
