@@ -1,7 +1,7 @@
 #ifndef CMENUWIDGET_H
 #define CMENUWIDGET_H
 
-#include "TestVLCKits.h"
+#include "VLCKits.h"
 
 #include <QWidget>
 #include <QMenuBar>
@@ -33,7 +33,7 @@ private:
 private:
     QMenuBar *_pmenuBar; // 菜单栏
 
-    TestVLCKits *_ptestVLCKits;
+    VLCKits *_pVLCKits;
 
 };
 

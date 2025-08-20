@@ -28,7 +28,7 @@ void CTitleBar::initUI()
     setAttribute(Qt::WA_StyledBackground);
 
     this->setFixedHeight(32 + 10);
-    this->setStyleSheet("background-color:rgb(54,54,54)");
+    this->setStyleSheet("background-color:rgb(165, 158, 159)");
 
     _plogoLabel = new QLabel(this);
     _plogoLabel->setFixedSize(24,24);
@@ -36,12 +36,12 @@ void CTitleBar::initUI()
             "border-image:url(:/Resource/accessible-icon.png);border:none");
 
     _ptitleTextLabel = new QLabel(this);
-    _ptitleTextLabel->setText("我是标题");
-    _ptitleTextLabel->setFixedWidth(120);
+    _ptitleTextLabel->setText("Ning-Player是自主研发的一款全新视频播放器发生在一个被称作无边框窗口的世界这里被神选中的视频将导引VLC之力");
+    _ptitleTextLabel->setFixedWidth(800);
     _ptitleTextLabel->setStyleSheet(
             "QLabel{font-family: Microsoft YaHei;"
-                "font-size:18px;"
-                "color:#BDC8E2;background-color:rgb(54,54,54);}");
+                "font-size:15px;"
+                "color:#BDC8E2;background-color:rgb(165, 158, 159);}");
 
     _psetButton = new QPushButton(this);
     _psetButton->setFixedSize(32, 32);

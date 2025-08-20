@@ -11,6 +11,7 @@ CFramelessWidget::CFramelessWidget(QWidget *parent)
     this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowMinMaxButtonsHint);
     // 接收悬停(Hover)事件
     setAttribute(Qt::WA_Hover);
+    this->setWindowTitle("Ning-Player");
 }
 
 CFramelessWidget::~CFramelessWidget()
@@ -29,13 +30,13 @@ bool CFramelessWidget::nativeEvent(const QByteArray& eventType, void* message, l
 
         int nX = GET_X_LPARAM(param->lParam) - this->geometry().x();
         int nY = GET_Y_LPARAM(param->lParam) - this->geometry().y();
-        qDebug() << "X_LPARAM:" << GET_X_LPARAM(param->lParam);
-        qDebug() << "Y_LPARAM:" << GET_Y_LPARAM(param->lParam);
-        qDebug() << "geometry.x: " << geometry().x();
-        qDebug() << "geometry.y: " << geometry().y();
-        qDebug() << "nX:" << nX << ", nY:" << nY;
-        qDebug() << "this->width():" << this->width();
-        qDebug() << "this->height():" << this->height();
+//        qDebug() << "X_LPARAM:" << GET_X_LPARAM(param->lParam);
+//        qDebug() << "Y_LPARAM:" << GET_Y_LPARAM(param->lParam);
+//        qDebug() << "geometry.x: " << geometry().x();
+//        qDebug() << "geometry.y: " << geometry().y();
+//        qDebug() << "nX:" << nX << ", nY:" << nY;
+//        qDebug() << "this->width():" << this->width();
+//        qDebug() << "this->height():" << this->height();
 
         if (nX > m_nBorderWidth && nX < this->width() - m_nBorderWidth &&
             nY > m_nBorderWidth && nY < this->height() - m_nBorderWidth)

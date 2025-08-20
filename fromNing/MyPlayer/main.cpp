@@ -1,13 +1,13 @@
 #include "CFramelessWidget.h"
 #include "CMainWindow.h"
-
+#include "CVideoWidget.h"
 #include "CBottomCtrlBar.h"
 
 #include <QApplication>
 
 int test0(QApplication & a)
 {
-    CBottomCtrlBar w;
+    CVideoWidget w;
     w.show();
     return a.exec();
 }

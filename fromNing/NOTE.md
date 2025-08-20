@@ -80,3 +80,44 @@ libvlc_media_player_set_hwnd(_pmediaPlayer, (void*)ui->videoWidget->winId());
     -   在C++中，不应该在基类的构造函数中调用虚函数，因为此时派生类部分的对象尚未构造完成，调用虚函数会引发不可预测的行为。
     -   如果你的初始化逻辑需要调用虚函数，那么将其放在 `init()` 函数中是更安全的选择，因为此时整个对象（包括派生类部分）已经完全构造。
 
+
+
+
+
+
+
+
+
+
+
+
+
+1.   拷贝了VLCKits.h .cpp
+2.   **修改了CMainWindows.h说明**:
+     1.  因为要使用 `QWidget` 作为视频播放区域，所以需要包含 `<QWidget>` 头文件。
+     2.  我们声明一个新的私有槽 `onPlay()`，它将连接到底部控制栏的播放按钮信号。
+     3.  添加 `_pVideoWidget` 成员变量，它将作为VLC渲染视频的画布。
+
+3.   **修改了CMainWindows.cpp说明**:
+     **连接信号**: 在构造函数中，我们将 `_pbottomCtrBar` 的 `sig_play` 信号连接到 `CMainWindow` 新创建的 `onPlay` 槽。这样，点击播放按钮时，就会执行我们自己的逻辑，而不是直接去调用 `VLCKits`。
+
+     **实现 `onPlay`**: 这个函数几乎是 `VLCWidget` 中 `on_btnOpen_clicked` 的翻版。它弹出文件对话框，然后调用 `_pVLCKits->play()`，最关键的是将 `_pVideoWidget->winId()` 作为参数传给VLC，告诉它在哪里绘图。
+
+     **UI初始化**: 在 `initUI` 中，我们创建了 `_pVideoWidget` 实例，并调用了 `_pVLCKits->initVLC()` 进行初始化。然后，我们按照您指定的顺序——`_ptitleBar`, `_pmenuWidget`, `_pVideoWidget`, `_pbottomCtrBar`——将它们依次添加到垂直布局 `pvLayout` 中。设置拉伸因子 `setStretchFactor` 可以确保在窗口缩放时，视频区域会自动填充可用空间。
+
+
+
+
+
+# 各种信号和槽
+
+
+
+![image-20250815201951728](./NOTE.assets/image-20250815201951728.png)
+
+![image-20250815201959139](./NOTE.assets/image-20250815201959139.png)
+
+![image-20250815202004890](./NOTE.assets/image-20250815202004890.png)
+
+![image-20250815202008047](./NOTE.assets/image-20250815202008047.png)
+

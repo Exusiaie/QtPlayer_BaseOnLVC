@@ -5,6 +5,9 @@
 #include <QDir>
 #include <vlc/vlc.h>
 #include <vector>
+
+#include <QTimer>
+
 using std::vector; // 文件列表
 
 class VLCKits : public QObject
@@ -47,6 +50,11 @@ signals://自定义信号
     void sigTimeText(const QString & str);
     void sigVolumeSliderPos(int value);
 
+    void sigTimeChanged(qint64 current, qint64 total); // 用于发送当前播放时间（毫秒）和总时长（毫秒）
+
+private slots:
+    void updateTime(); // 定时器超时时调用
+
 private:
     libvlc_instance_t *     _pInstance = nullptr;
     libvlc_media_t *        _pMedia = nullptr;
@@ -55,11 +63,13 @@ private:
     // libvlc_time_t           _totalSec = 0;  //一个文件的总时间
 
     // 文件列表相关数据人员
-    libvlc_media_list_player_t * _pMediaListPlayer = nullptr;
-    libvlc_media_list_t *        _pMediaList = nullptr;
+    libvlc_media_list_player_t * _pMediaListPlayer = nullptr;   //
+    libvlc_media_list_t *        _pMediaList = nullptr;         //
 
     vector<libvlc_time_t>        _durationArr;  // 将一个媒体文件的总时长存放在一个vector里
     int _currentIndex = -1; // 表示当前播放的媒体下标
+
+    QTimer * _pTimer = nullptr; // 用于每秒更新一次播放时间
 };
 
 #endif // VLCKITS_H

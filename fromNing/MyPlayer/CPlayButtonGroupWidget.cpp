@@ -20,9 +20,15 @@ CPlayButtonGroupWidget::CPlayButtonGroupWidget(QWidget *parent)
     m_pPlayButton = new QPushButton(this);
     m_pPlayButton->setText("");
     m_pPlayButton->setFixedSize(48, 48);
-    m_pPlayButton->setStyleSheet("QPushButton{background-image:url(:/Resource/playctrlBar/play.svg);border:none;}"
-                                 "QPushButton:hover{background-image:url(:/Resource/playctrlBar/play_hover.svg);border:none;}"
-                                 "QPushButton:pressed{background-image:url(:/Resource/playctrlBar/play.svg);border:none;}");
+    // 保存两种样式
+    m_playStyle = "QPushButton{background-image:url(:/Resource/playctrlBar/play.svg);border:none;}"
+                  "QPushButton:hover{background-image:url(:/Resource/playctrlBar/play_hover.svg);border:none;}"
+                  "QPushButton:pressed{background-image:url(:/Resource/playctrlBar/play.svg);border:none;}";
+    m_pauseStyle = "QPushButton{background-image:url(:/Resource/playctrlBar/pause.svg);border:none;}"
+                   "QPushButton:hover{background-image:url(:/Resource/playctrlBar/pause_hover.svg);border:none;}"
+                   "QPushButton:pressed{background-image:url(:/Resource/playctrlBar/pause.svg);border:none;}";
+    m_pPlayButton->setStyleSheet(m_playStyle); // 初始为播放样式
+
     m_pNextButton = new QPushButton(this);
     m_pNextButton->setText("");
     m_pNextButton->setFixedSize(32, 32);
@@ -53,7 +59,19 @@ CPlayButtonGroupWidget::CPlayButtonGroupWidget(QWidget *parent)
             &CPlayButtonGroupWidget::sig_pre);
     connect(m_pNextButton, &QPushButton::clicked, this,
             &CPlayButtonGroupWidget::sig_next);
+    connect(m_pAudioButton, &CVolumeButton::sliderValueChanged, this, &CPlayButtonGroupWidget::sliderValueChanged);
 }
+
+void CPlayButtonGroupWidget::setPlaying(bool playing)
+{
+    m_isPlaying = playing;
+    if (m_isPlaying) {
+        m_pPlayButton->setStyleSheet(m_pauseStyle);
+    } else {
+        m_pPlayButton->setStyleSheet(m_playStyle);
+    }
+}
+
 CPlayButtonGroupWidget::~CPlayButtonGroupWidget()
 {
 }

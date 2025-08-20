@@ -8,8 +8,16 @@ class CVolumeSliderDialog : public QDialog
 public:
     explicit CVolumeSliderDialog(QWidget * parent = Q_NULLPTR);
     ~CVolumeSliderDialog();
+
+    int value();               // 获取当前音量值 (0~100)
+    void setSliderValue(int value);  // 设置音量值 (0~100)
+
+signals:
+    void sliderValueChanged(int value);
+
 private:
     QSlider * _pslider = nullptr;
+    int temp; // 保存音量值
 };
 #endif // CVOLUMESLIDERDIALOG_H
 

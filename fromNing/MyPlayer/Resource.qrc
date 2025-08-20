@@ -50,5 +50,6 @@
         <file>Resource/accessible-icon.png</file>
         <file>Resource/titleBar/set.svg</file>
         <file>Resource/titleBar/set_hover.svg</file>
+        <file>Resource/playctrlBar/audio_mute.svg</file>
     </qresource>
 </RCC>

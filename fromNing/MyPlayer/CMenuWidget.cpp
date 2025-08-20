@@ -8,6 +8,9 @@
 CMenuWidget::CMenuWidget(QWidget *parent)
     : QWidget(parent)
 {
+    setAttribute(Qt::WA_StyledBackground);
+    setWindowFlags(Qt::FramelessWindowHint);
+
 
     // 调用初始化函数
     initMenuBar();
@@ -15,10 +18,14 @@ CMenuWidget::CMenuWidget(QWidget *parent)
 
     // 创建一个垂直布局来容纳菜单栏和右键菜单
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
-      _ptestVLCKits = new TestVLCKits(this);
+      _pVLCKits = new VLCKits(this);
     mainLayout->addWidget(_pmenuBar);
-   // mainLayout->addStretch(); // 填充剩余空间，使菜单栏保持在顶部
+
+    mainLayout->addStretch();
     mainLayout->setContentsMargins(0,0,0,0);
+    mainLayout->setSpacing(0);
+
+    this->setStyleSheet("background-color:rgb(208, 208, 208)");
 }
 
 CMenuWidget::~CMenuWidget()
@@ -65,27 +72,7 @@ void CMenuWidget::onNewActionTriggered()
 
 void CMenuWidget::onOpenActionTriggered()
 {
-      connect(this, &CMenuWidget::toTestVLCKits, _ptestVLCKits, &TestVLCKits::handlePlay);
-    // 使用 QFileDialog::getOpenFileNames 获取多个文件名
-      QStringList fileList = QFileDialog::getOpenFileNames(this, "请选择视频文件",
-                                                            "C:/Users/18388/Desktop/1. 播放器项目/视频播放器项目资料/videos",
-                                                            "视频文件(*.mp4);;视频文件(*.avi);;");
-      if (fileList.isEmpty()) {
-          return;
-      }
-
-//      bool ret = _ptestVLCKits
-
-      // 调用VLCKits的play方法，传入文件名列表和窗口ID
-      // 注意：play函数现在接受的是QStringList，而不是单个QString
-//      bool ret = _pVLCKits->play(fileList, (void*)ui->videoWidget->winId());
-//      if(!ret){
-//          qDebug("文件播放失败");
-//          return;
-//      }
-
-      //Windows头文件中的定时器函数
-     // SetTimer(NULL, 1, 300, TimeProc);
+    emit toTestVLCKits();
 }
 
 void CMenuWidget::onCopyActionTriggered()

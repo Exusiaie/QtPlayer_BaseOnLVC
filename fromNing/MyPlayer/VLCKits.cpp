@@ -2,7 +2,17 @@
 #include <QDebug>
 
 VLCKits::VLCKits(QObject *parent) : QObject(parent)
-{}
+{
+    _pInstance = nullptr;
+    _pMediaPlayer = nullptr;
+
+    // 初始化定时器
+    _pTimer = new QTimer(this);
+    // 设置定时器间隔为 1 秒（1000毫秒）
+    _pTimer->setInterval(1000);
+    // 将定时器的 timeout() 信号连接到我们新创建的 updateTime() 槽函数
+    connect(_pTimer, &QTimer::timeout, this, &VLCKits::updateTime);
+}
 
 VLCKits::~VLCKits() {
     libvlc_media_player_release(_pMediaPlayer);
@@ -138,7 +148,14 @@ bool VLCKits::play(const QStringList &names, void *hwnd)
 
     libvlc_media_player_set_hwnd(_pMediaPlayer, hwnd);//设置播放窗口句柄
     libvlc_media_list_player_play(_pMediaListPlayer);//开始播放
-    return true;
+    // 播放成功后，启动定时器
+    if (_pMediaPlayer && libvlc_media_player_play(_pMediaPlayer) == 0) {
+        // 【新增】如果正在播放，启动定时器
+        _pTimer->start();
+        return true;
+    }
+    qDebug() << "播放失败*******???";
+    return false;
 }
 
 void VLCKits::play()
@@ -151,7 +168,8 @@ void VLCKits::play()
 void VLCKits::pause()
 {
     libvlc_state_t state = libvlc_media_player_get_state(_pMediaPlayer);
-    if(state == libvlc_Playing) {
+    if(state == libvlc_Playing) {   
+        _pTimer->stop();    // 暂停时，停止定时器
         libvlc_media_player_pause(_pMediaPlayer);
     }
 }
@@ -159,9 +177,11 @@ void VLCKits::stop()
 {
     libvlc_state_t state = libvlc_media_player_get_state(_pMediaPlayer);
     if(state == libvlc_Playing || state == libvlc_Paused) {
+        _pTimer->stop(); // 停止时, 停止定时器
         libvlc_media_player_stop(_pMediaPlayer);
         //重置进度条的位置
         emit sigTimeSliderPos(0);
+        emit sigTimeChanged(0, 0);
     }
 }
 
@@ -190,4 +210,16 @@ void VLCKits::setPosition(int value)
 void VLCKits::addMediaIndex() {
     ++_currentIndex;
     _currentIndex %= _durationArr.size();
+}
+
+void VLCKits::updateTime()
+{
+    if (_pMediaPlayer) {
+        // 获取当前播放时间和总时长，单位是毫秒
+        qint64 currentTime = libvlc_media_player_get_time(_pMediaPlayer);
+        qint64 totalTime = libvlc_media_player_get_length(_pMediaPlayer);
+
+        // 发送信号，将这两个值传递出去
+        emit sigTimeChanged(currentTime, totalTime);
+    }
 }

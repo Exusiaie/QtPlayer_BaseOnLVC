@@ -23,9 +23,9 @@ SOURCES += \
     CMenuWidget.cpp \
     CPlayButtonGroupWidget.cpp \
     CTitleBar.cpp \
+    CVideoWidget.cpp \
     CVolumeButton.cpp \
     CVolumeSliderDialog.cpp \
-    TestVLCKits.cpp \
     VLCKits.cpp \
     main.cpp
 
@@ -36,9 +36,9 @@ HEADERS += \
     CMenuWidget.h \
     CPlayButtonGroupWidget.h \
     CTitleBar.h \
+    CVideoWidget.h \
     CVolumeButton.h \
     CVolumeSliderDialog.h \
-    TestVLCKits.h \
     VLCKits.h
 
 # Default rules for deployment.
